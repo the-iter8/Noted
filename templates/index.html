@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename = 'css/style.css')}}"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="navbar"></header>
+    <main>
+      <section class="contentbox"></section>
+      <section class="contentbox">
+        <div class="notes">
+          <h2>Lorem ipsum dolor sit amet. next</h2>
+          <hr />
+
+          <h1>lorem</h1>
+
+          <!-- Implementation for the addition of the notes.  -->
+          {%for i in tasklist%}
+
+          <div class="note">
+            <p>{{i}}</p>
+            <button class="edit">edit</button>
+            <button class="delete" href="/delete/{{tasklist[i]}}">
+              delete
+            </button>
+          </div>
+
+          {%endfor%}
+
+          <!-- This form routes to the function where we handled the submit button.  -->
+          <form action="/" method="post">
+            <input type="text" name="content" id="content" />
+            <button type="submit" value="add task">Submit</button>
+          </form>
+
+          <div class="add-btn">
+            <a href="#">Click to add note</a>
+          </div>
+        </div>
+
+        <form action="/uploader" method="POST" enctype = "multipart/form-data">
+          <input type="file" name="file" />
+          <input type="submit" />
+        </form>
+
+      </section>
+    </main>
+    <footer class="footer"></footer>
+  </body>
+</html>
