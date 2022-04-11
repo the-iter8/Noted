@@ -8,13 +8,10 @@ app = Flask(__name__)
 @app.route('/', methods = ['GET', 'POST'])
 def form():
     f = open("test.txt","a+")
-    task_nos = 0
-
     if request.method == 'POST':
         content = request.form['content']
         try:
             f.write(content + "\n")
-            task_nos += 1
             return redirect('/')
         except:
             return "There was an issue adding the text. "
@@ -25,12 +22,16 @@ def form():
         
         return render_template("index.html", tasklist = tasklist)
 
+# Just a way to save files 
+'''
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
    if request.method == 'POST':
        f = request.files['file']
        f.save(secure_filename(f.filename))
        return 'file uploaded successfully'
+'''
+
 
 @app.route('/delete}')
 def delete():
