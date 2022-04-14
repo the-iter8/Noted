@@ -9,48 +9,61 @@
       rel="stylesheet"
       href="{{url_for('static', filename = 'css/style.css')}}"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
     <header class="navbar"></header>
     <main>
-      <section class="contentbox"></section>
-      <section class="contentbox">
-        <div class="notes">
-          <h2>Lorem ipsum dolor sit amet. next</h2>
+      <section class="contentbox" id="contentbox-left">
+        <div id="notes-img">
+          <img
+            src="/static/icons8-notes.svg"
+            alt=""
+            style="transform: scale(0.5)"
+          />
+        </div>
+        <div id="heading-left">
+          <p>Noted.</p>
+        </div>
+        <div class="heading-general">Level up your note taking.</div>
+      </section>
+
+      <section class="contentbox" d = "contentbox-right">
+        <div class="content">
+          <p id="day" class="heading-general">Monday</p>
           <hr />
+          <div class="lists">
+            {%for i in tasklist%}
 
-          <h1>lorem</h1>
+            <div class="note">
+              <div id="checklist">
+                <input id="01" type="checkbox" name="r" value="1" />
+                <label for="01">{{i}}</label>
+              </div>
 
-          <!-- Implementation for the addition of the notes.  -->
-          {%for i in tasklist%}
+              <div class="btns">
+                <a href="https://en.wikipedia.org/wiki/You" target="_blank"
+                  ><img src="/static/icons8-trash.svg" alt="delete"
+                /></a>
+                <a href="https://en.wikipedia.org/wiki/You" target="_blank"
+                  ><img src="/static/edit.svg" alt="edit"
+                /></a>
+              </div>
+            </div>
+            {%endfor%}
 
-          <div class="note">
-            <p>{{i}}</p>
-            <button class="edit">edit</button>
-            <button class="delete" href="/delete/{{tasklist[i]}}">
-              delete
-            </button>
-          </div>
-
-          {%endfor%}
-
-          <!-- This form routes to the function where we handled the submit button.  -->
-          <form action="/" method="post">
-            <input type="text" name="content" id="content" />
-            <button type="submit" value="add task">Submit</button>
-          </form>
-
-          <div class="add-btn">
-            <a href="#">Click to add note</a>
+            <form action="/" method="post">
+              <input type="text" name="content" id="content" />
+              <button type="submit" value="add task">Submit</button>
+            </form>
           </div>
         </div>
-
-        <form action="/uploader" method="POST" enctype = "multipart/form-data">
-          <input type="file" name="file" />
-          <input type="submit" />
-        </form>
-
       </section>
     </main>
     <footer class="footer"></footer>
