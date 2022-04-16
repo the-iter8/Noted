@@ -16,6 +16,5 @@ def form():
     else:
         f = open("test.txt","r")
         tasklist = f.readlines()
-        
         return render_template("index.html", tasklist = tasklist)
 
