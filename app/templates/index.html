@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -22,19 +26,24 @@
     <main>
       <section class="contentbox" id="contentbox-left">
         <div id="notes-img">
-          <img
-            src="/static/icons8-notes.svg"
-            alt=""
-            style="transform: scale(0.5)"
-          />
+          <img src="/static/icons8-notes.svg" alt="" />
         </div>
+
         <div id="heading-left">
           <p>Noted.</p>
         </div>
-        <div class="heading-general">Level up your note taking.</div>
+
+        <p class="heading-general">Level up your note taking.</p>
+
+        <button class="learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">learn more</span>
+        </button>
       </section>
 
-      <section class="contentbox" d = "contentbox-right">
+      <section class="contentbox" d="contentbox-right">
         <div class="content">
           <p id="day" class="heading-general">Monday</p>
           <hr />
@@ -59,13 +68,32 @@
             {%endfor%}
 
             <form action="/" method="post">
-              <input type="text" name="content" id="content" />
-              <button type="submit" value="add task">Submit</button>
+              <input
+                type="text"
+                name="content"
+                id="content"
+                class="form-input"
+                placeholder="New Note"
+              />
+
+              <label for="name" class="form-label">Add Note</label>
+
+              <button type="submit" value="add task" id = "add-task-btn">Submit</button>
             </form>
           </div>
         </div>
       </section>
     </main>
     <footer class="footer"></footer>
+
+    <script>
+      addNote = document.querySelector(".form-label");
+
+      addNote.addEventListener("click", function () {
+        console.log("Clicked");
+        document.getElementById("add-task-btn").click();
+      });
+      console.log("Working");
+    </script>
   </body>
 </html>
