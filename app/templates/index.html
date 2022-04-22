@@ -52,8 +52,8 @@
 
             <div class="note">
               <div id="checklist">
-                <input id="01" type="checkbox" name="r" value="1" />
-                <label for="01">{{i}}</label>
+                  <input id="{{ loop.index }}" type="checkbox" name="r" value="1" />
+                  <label for="{{ loop.index }}">{{i}}</label>
               </div>
 
               <div class="btns">
@@ -67,18 +67,12 @@
             </div>
             {%endfor%}
 
-            <form action="/" method="post">
-              <input
-                type="text"
-                name="content"
-                id="content"
-                class="form-input"
-                placeholder="New Note"
-              />
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.content() }}
 
-              <label for="name" class="form-label">Add Note</label>
-
-              <button type="submit" value="add task" id = "add-task-btn">Submit</button>
+                <label for="name" class="form-label">Add Note</label>
+                {{ form.submit() }}
             </form>
           </div>
         </div>

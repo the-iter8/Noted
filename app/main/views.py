@@ -1,20 +1,21 @@
 from flask import render_template, request, redirect
+
+from .forms import ListForm
 from . import main
 
-
 @main.route('/', methods = ['GET', 'POST'])
-def form():
-    f = open("test.txt","a+")
+def form_():
+    form = ListForm()
     if request.method == 'POST':
-        content = request.form['content']
-        try:
-            f.write(content + "\n")
-            return redirect('/')
-        except:
-            return "There was an issue adding the text. "
-
-    else:
-        f = open("test.txt","r")
+        if form.validate_on_submit():
+            with open("test.txt", "a+") as f:
+                content = form.content.data
+                f.write(content + '\n')
+                return redirect('/')
+    elif request.method == 'GET':
+        f = open("test.txt", "r")
         tasklist = f.readlines()
-        return render_template("index.html", tasklist = tasklist)
+        print(form.content())
+        print(form.submit())
+        return render_template('index.html', form=form, tasklist=tasklist)
 

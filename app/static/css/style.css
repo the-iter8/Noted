@@ -391,7 +391,7 @@ hr {
 .form-input:placeholder-shown + .form-label {
   opacity: 0;
   visibility: hidden;
-  -webkit-transform: translateY(-4rem);
+  /*-webkit-transform: translateY(-4rem);*/
   transform: translateY(-4rem);
 }
 

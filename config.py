@@ -17,6 +17,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True;
+    print("using DEVELOPMENT CONFIG")
     SQLALCHEMY_DATABASE_URI = os.getenv(devDbEnvVar)
 
 class TestingConfig(Config):
