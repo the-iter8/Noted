@@ -14,11 +14,13 @@ prodDbEnvVar = "DATABASE_URI"
 
 class Config:
     SECRET_KEY = os.getenv(keyEnvVar, "defaultKey")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevelopmentConfig(Config):
     DEBUG = True;
-    print("using DEVELOPMENT CONFIG")
-    SQLALCHEMY_DATABASE_URI = os.getenv(devDbEnvVar)
+    SQLALCHEMY_DATABASE_URI = os.getenv(devDbEnvVar) or \
+        "sqlite:///" + os.path.join(basedir, 'data_dev.sqlite')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class TestingConfig(Config):
     TESTING = True;
@@ -26,6 +28,8 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.getenv(prodDbEnvVar)
+    SQLALCHEMY_DATABASE_URI = os.getenv(devDbEnvVar) or \
+        "sqlite:///" + os.path.join(basedir, 'data.sqlite')
 
 
 config = {
