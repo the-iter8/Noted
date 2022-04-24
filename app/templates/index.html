@@ -52,17 +52,21 @@
 
             <div class="note">
               <div id="checklist">
-                  <input id="{{ loop.index }}" type="checkbox" name="r" value="1" />
-                  <label for="{{ loop.index }}">{{i}}</label>
+                  <input id="{{ i.id_ }}" type="checkbox" name="r" value="1" />
+                  <label for="{{ i.id_ }}">{{i.title}}</label>
               </div>
 
               <div class="btns">
-                <a href="https://en.wikipedia.org/wiki/You" target="_blank"
-                  ><img src="/static/icons8-trash.svg" alt="delete"
-                /></a>
-                <a href="https://en.wikipedia.org/wiki/You" target="_blank"
-                  ><img src="/static/edit.svg" alt="edit"
-                /></a>
+                  <form action="/delete/{{ i.id_ }}" method="post">
+                      <button type="submit">
+                          <img src="/static/icons8-trash.svg" alt="delete"/>
+                      </button>
+                  </form>
+                  <form action="/edit/{{ i.id_ }}" method="post">
+                      <button type="submit">
+                          <img src="/static/edit.svg" alt="edit"/>
+                      </button>
+                  </form>
               </div>
             </div>
             {%endfor%}
