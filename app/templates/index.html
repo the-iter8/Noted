@@ -26,7 +26,7 @@
     <main>
       <section class="contentbox" id="contentbox-left">
         <div id="notes-img">
-          <img src="/static/icons8-notes.svg" alt="" />
+          <img src="/static/img/icons8-notes.svg" alt="" />
         </div>
 
         <div id="heading-left">
@@ -49,49 +49,58 @@
           <hr />
           <div class="lists">
             {%for i in tasklist%}
-
             <div class="note">
               <div id="checklist">
-                  <input id="{{ i.id_ }}" type="checkbox" name="r" value="1" />
-                  <label for="{{ i.id_ }}">{{i.title}}</label>
+                <input id="{{ i.id_ }}" type="checkbox" name="r" value="1" />
+                <label for="{{ i.id_ }}">{{i.title}}</label>
               </div>
 
+              <!-- Buttons -->
+
               <div class="btns">
-                  <form action="/delete/{{ i.id_ }}" method="post">
-                      <button type="submit">
-                          <img src="/static/icons8-trash.svg" alt="delete"/>
-                      </button>
-                  </form>
-                  <form action="/edit/{{ i.id_ }}" method="post">
-                      <button type="submit">
-                          <img src="/static/edit.svg" alt="edit"/>
-                      </button>
-                  </form>
+                <form action="/delete/{{ i.id_ }}" method="post">
+                  <button
+                    type="submit"
+                    class="modify-btns delete-btn"
+                    id="{{ i.id_ }}"
+                  >
+                    <img src="/static/img/icons8-trash.svg" alt="delete" />
+                  </button>
+                </form>
+
+                <button
+                  type="submit"
+                  class="modify-btns edit-btn"
+                  id="{{ i.id_ }}"
+                >
+                  <img src="/static/img/edit.svg" alt="edit" />
+                </button>
+
+                <button
+                  type="submit"
+                  class="modify-btns save-btn"
+                  id="{{ i.id_ }}"
+                >
+                  <img src="/static/img/tick.svg" alt="edit" />
+                </button>
               </div>
+
+              <!--  -->
             </div>
             {%endfor%}
 
             <form method="POST">
-                {{ form.hidden_tag() }}
-                {{ form.content() }}
-
-                <label for="name" class="form-label">Add Note</label>
-                {{ form.submit() }}
+              {{ form.hidden_tag() }} {{ form.content() }}
+              <label for="name" class="form-label">Add Note</label>
+              {{ form.submit() }}
             </form>
           </div>
         </div>
       </section>
     </main>
     <footer class="footer"></footer>
-
-    <script>
-      addNote = document.querySelector(".form-label");
-
-      addNote.addEventListener("click", function () {
-        console.log("Clicked");
-        document.getElementById("add-task-btn").click();
-      });
-      console.log("Working");
-    </script>
   </body>
+
+  <!-- JS here because it catches the element befor it even loads. -->
+  <script src="{{url_for('static', filename = 'javascript/script.js')}}"></script>
 </html>

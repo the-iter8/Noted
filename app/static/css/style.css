@@ -365,7 +365,7 @@ hr {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   margin-left: 3rem;
-  margin-top: 0.7rem;
+  /* margin-top: 0.7rem; */
   cursor: pointer;
 
   display: block;
@@ -384,7 +384,7 @@ hr {
   background-color: rgb(255, 255, 255);
   width: 80%;
   display: block;
-  border-bottom: 0.3rem solid transparent;
+  
   transition: all 0.3s;
 }
 
@@ -396,5 +396,37 @@ hr {
 }
 
 #add-task-btn {
+  display: none;
+}
+
+.input-edit
+{
+  font-family: "Roboto", sans-serif;
+  font-size: 1.15rem;
+  padding: 0.6em;
+  border: none;
+  border-radius: 1.5em;
+  background-color: rgb(255, 255, 255);
+  transition: linear all 0.3s;
+}
+
+.btns
+{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.modify-btns
+{
+  background-color: inherit;
+  border: 0;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+
+.save-btn
+{
   display: none;
 }
