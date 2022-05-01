@@ -10,11 +10,9 @@ addNote.addEventListener("click", function () {
 });
 
 function changeState(oneBtn, twoBtn, i) {
-
-  modifyBtns[i+(2*i)].style.display = twoBtn;
-  modifyBtns[i+1+(2*i)].style.display = twoBtn;
-  modifyBtns[i+2+(2*i)].style.display = oneBtn;
-  
+  modifyBtns[i + 2 * i].style.display = twoBtn;
+  modifyBtns[i + 1 + 2 * i].style.display = twoBtn;
+  modifyBtns[i + 2 + 2 * i].style.display = oneBtn;
 }
 
 // Iterating through all the edit btns
@@ -23,25 +21,24 @@ for (let i = 0; i < editBtns.length; i++) {
     console.log("Clicked save");
 
     const finalNote = document.querySelector(".input-edit").value;
-    changeState(`None`, `block`,i);
 
-    document.querySelector(
-      ".input-edit"
-    ).outerHTML = `<label for='${i+1}'>${finalNote}</label>`;
+    changeState(`None`, `block`, i);
 
-    
+    document.querySelector(".input-edit").outerHTML = `<label for='${
+      i + 1
+    }'>${finalNote}</label>`;
   });
 
   editBtns[i].addEventListener("click", function () {
     let classLst = editBtns[i].classList;
-    let currentNote = document.querySelector(`label[for='${i+1}']`);
+    let currentNote = document.querySelector(`label[for='${i + 1}']`);
 
+    changeState(`block`, `none`, i);
 
-    changeState(`block`, `none`,i);
+    currentNote.outerHTML = ` <form action="/edit/{{i.id_}}" id = "edit-form" method="POST">
+    <input type="text" class="input-edit" />
+    </form>`;
 
-    console.log(currentNote) 
-
-    currentNote.outerHTML = `<input type="text" class="input-edit">`;
     document.querySelector(".input-edit").value = currentNote.textContent;
   });
 }
