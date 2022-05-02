@@ -39,4 +39,8 @@ def edit(note_id):
     if request.method == 'GET':
         return abort(404)
     elif request.method == 'POST':
+        note = Note.query.get(note_id)
+        note.title = request.form.get("modified_content")
+        db.session.add(note)
+        db.session.commit()
         return redirect('/')
