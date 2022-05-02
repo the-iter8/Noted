@@ -12,7 +12,6 @@ def home():
         tasklist = [note for note in Note.query.all()]
         return render_template('index.html', form=form, tasklist=tasklist)
 
-        
     elif request.method == 'POST':
         if form.validate_on_submit():
             content = form.content.data

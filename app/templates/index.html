@@ -51,8 +51,8 @@
             {%for i in tasklist%}
             <div class="note">
               <div id="checklist">
-                <input id="{{ i.id_ }}" type="checkbox" name="r" value="1" />
-                <label for="{{ i.id_ }}">{{i.title}}</label>
+                <input id="{{ loop.index }}" type="checkbox" name="r" value="1" />
+                <label for="{{ loop.index }}">{{i.title}}</label>
               </div>
 
               <!-- Buttons -->
