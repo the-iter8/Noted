@@ -1,114 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+     
+    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename = 'css/style.css')}}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
-      rel="stylesheet"
-    />
     <title>Document</title>
   </head>
   <body>
-    <header class="navbar"></header>
-    <main>
-      <section class="contentbox" id="contentbox-left">
-        <div id="notes-img">
-          <img src="/static/img/icons8-notes.svg" alt="" />
-        </div>
-
-        <div id="heading-left">
-          <p>Noted.</p>
-        </div>
-
-        <p class="heading-general">Level up your note taking.</p>
-
-        <button class="learn-more">
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
-          <span class="button-text">learn more</span>
-        </button>
-      </section>
-
-      <section class="contentbox" d="contentbox-right">
-        <div class="content">
-          <p id="day" class="heading-general">Monday</p>
-          <hr />
-          <div class="lists">
-            {%for i in tasklist%}
-            <div class="note">
-              <div id="checklist">
-                <input
-                  id="{{ loop.index }}"
-                  type="checkbox"
-                  name="r"
-                  value="1"
-                />
-                <label for="{{ loop.index }}">{{i.title}}</label>
-              </div>
-
-              <!-- Buttons -->
-
-              <div class="btns">
-                <form action="/delete/{{ i.id_ }}" method="post">
-                  <button
-                    type="submit"
-                    class="modify-btns delete-btn"
-                    id="{{ i.id_ }}"
-                  >
-                    <img src="/static/img/icons8-trash.svg" alt="delete" />
-                  </button>
-                </form>
-
-                <button
-                  type="submit"
-                  class="modify-btns edit-btn"
-                  id="{{ i.id_ }}"
-                >
-                  <img src="/static/img/edit.svg" alt="edit" />
-                </button>
-
-                <button
-                  type="submit"
-                  class="modify-btns save-btn"
-                  id="{{ i.id_ }}"
-                  form="edit-form"
-                >
-                  <img src="/static/img/tick.svg" alt="edit" />
-                </button>
-              </div>
-            </div>
-            {%endfor%}
-
-            <form method="POST">
-              {{ form.hidden_tag() }} {{ form.content() }}
-              <label for="name" class="form-label">Add Note</label>
-              {{ form.submit() }}
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- FOOTER HERE -->
     <footer id="site-footer">
       <section class="horizontal-footer-section" id="footer-top-section">
         <div id="footer-logo">
           <picture>
             <img
-              src="/static/img/logo.png"
+              src="https://raw.githubusercontent.com/taviskaron/t-div-headers/main/img/logo3.png"
               alt="footer logo"
               role="presentation"
             />
@@ -117,7 +24,7 @@
         <div id="footer-top-menu-container" role="menubar">
           <ul id="footer-top-menu" role="menu">
             <li class="footer-top-menu-item" role="menuitem">
-              <a href="#" class="footer-top-menu-link">hehe</a>
+              <a href="#" class="footer-top-menu-link">IT Services</a>
             </li>
             <li
               class="footer-top-menu-item footer-top-menu-item-active"
@@ -126,7 +33,7 @@
               <a href="#" class="footer-top-menu-link">Web development</a>
             </li>
             <li class="footer-top-menu-item" role="menuitem">
-              <a href="#" class="footer-top-menu-link">Some word</a>
+              <a href="#" class="footer-top-menu-link">SEO</a>
             </li>
             <li class="footer-top-menu-item" role="menuitem">
               <a href="#" class="footer-top-menu-link">UI/UX</a>
@@ -145,13 +52,17 @@
             <p>
               <img
                 src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png"
-              />New Delhi, India
+              />30/20, Verkhy street, Moscow, Russia
             </p>
-
+            <p>
+              <img
+                src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png"
+              />7 (800) 555–35–35
+            </p>
             <p>
               <img
                 src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png"
-              />themodops@gmail.com
+              />noreply@reply.io
             </p>
             <p>
               <img
@@ -229,7 +140,7 @@
 
       <section class="horizontal-footer-section" id="footer-bottom-section">
         <div id="footer-copyright-info">
-          &copy; TheModOps 2022. All rights reserved.
+          &copy; Reimu Inc. 2022. All rights reserved.
         </div>
         <div id="footer-social-buttons">
           <img
@@ -247,8 +158,9 @@
         </div>
       </section>
     </footer>
-  </body>
 
-  <!-- JS here because it catches the element befor it even loads. -->
-  <script src="{{url_for('static', filename = 'javascript/script.js')}}"></script>
+    <p style="text-align: center; margin: 30px 0">
+      The adaptive breakpoint here is at 960px.
+    </p>
+  </body>
 </html>

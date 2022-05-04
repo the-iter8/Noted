@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        text-align: center;
+        color: white;
+        box-sizing: border-box;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        background-color: #222;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      .travolta {
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url("https://i.imgur.com/gjdv2hl.gif") center center
+          no-repeat;
+        background-size: cover;
+        background-color: black;
+      }
+
+      .heading-main {
+        font-size: 775%;
+        padding-top: 25vh;
+        margin-bottom: 1vh;
+        z-index: 2;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+        z-index: 2;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+      .go-back {
+        text-decoration: none;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.703);
+        padding: 0.5em 1em;
+        font-family: "Times New Roman", Times, serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="heading-main">
+      <a
+        href="https://en.wikipedia.org/wiki/404#:~:text=HTTP%20404%2C%20the%20HTTP%20error%20response%20status%20for%20%22Not%20Found%22"
+        target="_blank"
+        >404</a
+      >
+    </p>
+    <div class="heading">
+      <p style="font-size: 150%">There's nothing here.</p>
+      <button class="go-back" style="font-size: 100%">Go back</button>
+    </div>
+
+    <div class="travolta"></div>
+  </body>
+</html>
