@@ -23,6 +23,22 @@
   </head>
   <body>
     <header class="navbar"></header>
+    <nav>
+      <section class="navbar-section">
+        <img src="/static/img/logo.png" alt="nav logo" role="presentation" />
+      </section>
+
+      <section style="width: 40%" class="navbar-section">
+       
+
+        <a href="" class="navbar-items">Home</a>
+        <a href="" class="navbar-items">Categories</a>
+        <a href="" class="navbar-items">Blog</a>
+        <a href="" class="navbar-items">About</a>
+        <a href="" class="navbar-items">Contact</a>
+      </section>
+    </nav>
+
     <main>
       <section class="contentbox other" id="contentbox-left">
         <div id="notes-img">
@@ -157,6 +173,27 @@
           <h1>Our Newsletter</h1>
           <a href="#" class="footer-button" role="button">Subscribe</a>
         </div>
+
+        <div class="footer-columns">
+          <h1>Information</h1>
+          <ul class="footer-column-menu" role="menu">
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">About Us</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Message Us</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link"
+                >Leave a Feedback</a
+              >
+            </li>
+          </ul>
+        </div>
+
         <div class="footer-columns">
           <h1>Resources</h1>
           <ul class="footer-column-menu" role="menu">
@@ -183,36 +220,16 @@
           <h1>Overview</h1>
           <ul class="footer-column-menu" role="menu">
             <li class="footer-column-menu-item" role="menuitem">
-              <a href="#" class="footer-column-menu-item-link">Services </a>
+              <a href="#" class="footer-column-menu-item-link">News</a>
             </li>
             <li class="footer-column-menu-item" role="menuitem">
               <a href="#" class="footer-column-menu-item-link">Pricing</a>
             </li>
             <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Services </a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
               <a href="#" class="footer-column-menu-item-link">Portfolio</a>
-            </li>
-            <li class="footer-column-menu-item" role="menuitem">
-              <a href="#" class="footer-column-menu-item-link">News</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-columns">
-          <h1>Information</h1>
-          <ul class="footer-column-menu" role="menu">
-            <li class="footer-column-menu-item" role="menuitem">
-              <a href="#" class="footer-column-menu-item-link">About Us</a>
-            </li>
-            <li class="footer-column-menu-item" role="menuitem">
-              <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
-            </li>
-            <li class="footer-column-menu-item" role="menuitem">
-              <a href="#" class="footer-column-menu-item-link">Message Us</a>
-            </li>
-            <li class="footer-column-menu-item" role="menuitem">
-              <a href="#" class="footer-column-menu-item-link"
-                >Leave a Feedback</a
-              >
             </li>
           </ul>
         </div>
@@ -240,5 +257,7 @@
   </body>
 
   <!-- JS here because it catches the element befor it even loads. -->
-  <script src="{{url_for('static', filename = 'javascript/script.js')}}"></script>
+  <script src="{{url_for('static', filename = 'javascript/script.js')}}">
+    
+  </script>
 </html>
