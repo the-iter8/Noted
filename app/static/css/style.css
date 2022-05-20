@@ -5,6 +5,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+a
+{
+  text-decoration: none;
+}
+
 
 body {
   background-color: grey;
@@ -722,7 +727,7 @@ footer#site-footer #footer-social-buttons img:hover {
 }
 
 /* FOR TABLETS AND PHONES */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 960px), screen and (max-height: 450px) {
   .content {
     padding: 1.4em;
     width: unset;
@@ -761,16 +766,18 @@ footer#site-footer #footer-social-buttons img:hover {
   }
 }
 
-@media screen and (max-device-width: 540px) {
+@media screen and (max-device-width: 540px), screen and (max-height: 450px) {
   main {
     overflow: hidden;
   }
 
   .mobile {
     display: block;
+    text-align: center;
   }
 
   .unsupported {
+    text-align: left;
     /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
@@ -785,7 +792,6 @@ footer#site-footer #footer-social-buttons img:hover {
     transform: scale(0.4);
     position: absolute;
     left: -8.625em;
-    bottom: -7.1875em;
   }
   .other {
     display: none;
