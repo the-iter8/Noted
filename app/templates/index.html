@@ -30,12 +30,17 @@
 
       <section style="width: 40%" class="navbar-section">
        
-
+        
         <a href="" class="navbar-items">Home</a>
         <a href="" class="navbar-items">Categories</a>
         <a href="" class="navbar-items">Blog</a>
         <a href="" class="navbar-items">About</a>
-        <a href="" class="navbar-items">Contact</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('auth.logout') }}" class="navbar-items">Log Out</a>
+        {% else %}
+        <a href="{{ url_for('auth.login') }}" class="navbar-items">Log In</a>
+        {% endif %}
+
       </section>
     </nav>
 

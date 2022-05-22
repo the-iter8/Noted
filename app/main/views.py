@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, abort, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 from .forms import ListForm, LoginForm
 from . import main, auth
@@ -7,10 +7,11 @@ from .. import db
 from ..models import User, Note
 
 @main.route('/', methods = ['GET', 'POST'])
+@login_required
 def home():
     form = ListForm()
     if request.method == 'GET':
-        tasklist = [note for note in Note.query.all()]
+        tasklist = [note for note in Note.query.filter_by(user_id=current_user.id).all()]
         return render_template('index.html', form=form, tasklist=tasklist)
 
     elif request.method == 'POST':
@@ -19,13 +20,14 @@ def home():
             # TODO: Currently only working for one User.
             # Assign notes to currently logged in User.
             # TODO: separate 'description' form 'title'
-            user = User.query.first()
+            user = User.query.filter_by(name=current_user.name).first()
             note = Note(title=content, description=content, user=user)
             db.session.add(note)
             db.session.commit()
         return redirect(url_for('main.home'))
 
 @main.route('/delete/<int:note_id>', methods = ['GET','POST'])
+@login_required
 def delete(note_id):
     if request.method == 'GET':
         return abort(404)
@@ -36,6 +38,7 @@ def delete(note_id):
         return redirect(url_for('main.home'))
 
 @main.route('/edit/<int:note_id>', methods = ['GET', 'POST'])
+@login_required
 def edit(note_id):
     if request.method == 'GET':
         return abort(404)
@@ -59,3 +62,9 @@ def login():
             return redirect(next)
         return "<h1>Invalid Username or password</h1>"
     return render_template('login.html', form=form)
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.home'))
