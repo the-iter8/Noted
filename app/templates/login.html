@@ -4,21 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename = 'css/style.css')}}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
-      rel="stylesheet"
-    />
     <title>Document</title>
   </head>
   <body>
@@ -39,98 +24,13 @@
       </section>
     </nav>
 
-    <main>
-      <section class="contentbox other" id="contentbox-left">
-        <div id="notes-img">
-          <img src="/static/img/icons8-notes.svg" alt="" />
-        </div>
+    <form action='{{ url_for( "auth.login" ) }}' method='POST'>
+        {{ form.hidden_tag() }} 
+        Email: {{ form.email_id() }} <br>
+        Password: {{ form.password() }} <br>
+        {{ form.submit() }} <br>
+    </form>
 
-        <div id="heading-left">
-          <p>Noted.</p>
-        </div>
-
-        <p class="heading-general">Level up your note taking.</p>
-
-        <button class="learn-more">
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
-          <span class="button-text">learn more</span>
-        </button>
-      </section>
-
-      <section class="contentbox" d="contentbox-right">
-        <div class="unsupported">
-          <h2>
-            For your device, download our application, designed for managing
-            your tasks on the go!
-          </h2>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.google.android.youtube&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-            ><img
-              alt="Get it on Google Play"
-              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-          /></a>
-        </div>
-
-        <div class="content other">
-          <p id="day" class="heading-general">Monday</p>
-          <hr />
-          <div class="lists">
-            {%for i in tasklist%}
-            <div class="note">
-              <div id="checklist">
-                <input
-                  id="{{ loop.index }}"
-                  type="checkbox"
-                  name="r"
-                  value="1"
-                />
-                <label for="{{ loop.index }}">{{i.title}}</label>
-              </div>
-
-              <!-- Buttons -->
-
-              <div class="btns other">
-                <form action="/delete/{{ i.id_ }}" method="post">
-                  <button
-                    type="submit"
-                    class="modify-btns delete-btn"
-                    id="{{ i.id_ }}"
-                  >
-                    <img src="/static/img/icons8-trash.svg" alt="delete" />
-                  </button>
-                </form>
-
-                <button
-                  type="submit"
-                  class="modify-btns edit-btn"
-                  id="{{ i.id_ }}"
-                >
-                  <img src="/static/img/edit.svg" alt="edit" />
-                </button>
-
-                <button
-                  type="submit"
-                  class="modify-btns save-btn"
-                  id="{{ i.id_ }}"
-                  form="edit-form"
-                >
-                  <img src="/static/img/tick.svg" alt="edit" />
-                </button>
-              </div>
-            </div>
-            {%endfor%}
-
-            <form action="/" method="POST">
-              {{ form.hidden_tag() }} {{ form.content() }}
-              <label for="name" class="form-label">Add Note</label>
-              {{ form.submit() }}
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
     <!-- FOOTER HERE -->
     <footer id="site-footer">
       <section class="horizontal-footer-section" id="footer-top-section">

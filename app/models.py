@@ -1,9 +1,10 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from . import db
+from flask_login import UserMixin
+from . import db, login_manager
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    id_ = db.Column(db.Integer, primary_key=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
@@ -26,17 +27,21 @@ class User(db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return f"User(id_={self.id_},name={self.name},"\
+        return f"User(id={self.id},name={self.name},"\
             f"email={self.email})"
 
 class Note(db.Model):
     __tablename__ = 'notes'
-    id_ = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(200))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id_'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
-        return f"Note(id_={self.id_},title={self.title},"\
+        return f"Note(id={self.id},title={self.title},"\
         f"description={self.description}, user_id={self.user_id})"
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
