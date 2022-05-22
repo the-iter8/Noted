@@ -92,11 +92,11 @@
               <!-- Buttons -->
 
               <div class="btns other">
-                <form action="/delete/{{ i.id_ }}" method="post">
+                <form action="/delete/{{ i.id }}" method="post">
                   <button
                     type="submit"
                     class="modify-btns delete-btn"
-                    id="{{ i.id_ }}"
+                    id="{{ i.id }}"
                   >
                     <img src="/static/img/icons8-trash.svg" alt="delete" />
                   </button>
@@ -105,7 +105,7 @@
                 <button
                   type="submit"
                   class="modify-btns edit-btn"
-                  id="{{ i.id_ }}"
+                  id="{{ i.id }}"
                 >
                   <img src="/static/img/edit.svg" alt="edit" />
                 </button>
@@ -113,7 +113,7 @@
                 <button
                   type="submit"
                   class="modify-btns save-btn"
-                  id="{{ i.id_ }}"
+                  id="{{ i.id }}"
                   form="edit-form"
                 >
                   <img src="/static/img/tick.svg" alt="edit" />

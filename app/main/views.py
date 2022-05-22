@@ -23,7 +23,7 @@ def home():
             note = Note(title=content, description=content, user=user)
             db.session.add(note)
             db.session.commit()
-            return redirect('/')
+        return redirect(url_for('main.home'))
 
 @main.route('/delete/<int:note_id>', methods = ['GET','POST'])
 def delete(note_id):
@@ -33,7 +33,7 @@ def delete(note_id):
         note = Note.query.get(note_id)
         db.session.delete(note)
         db.session.commit()
-        return redirect('/')
+        return redirect(url_for('main.home'))
 
 @main.route('/edit/<int:note_id>', methods = ['GET', 'POST'])
 def edit(note_id):
@@ -44,7 +44,7 @@ def edit(note_id):
         note.title = request.form.get("modified_content")
         db.session.add(note)
         db.session.commit()
-        return redirect('/')
+        return redirect(url_for('main.home'))
 
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():
