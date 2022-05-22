@@ -1,3 +1,4 @@
+from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 
 class User(db.Model):
@@ -5,9 +6,24 @@ class User(db.Model):
     id_ = db.Column(db.Integer, primary_key=True, nullable=False)
     name = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
     # defines reverse direction of relationship by adding 'user' attribute to Notes.
     # 'user' attribute can be use to access any User from Notes instead of user_id foreign key.
     notes = db.relationship('Note', backref=db.backref('user'))
+
+    # password getter
+    @property
+    def password(self):
+        return AttributeError("password is not a readable attribute")
+
+    # password setter 
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    # Verifies password
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
         return f"User(id_={self.id_},name={self.name},"\
