@@ -8,6 +8,8 @@ flask = "*"
 colorama = "*"
 flask-sqlalchemy = "*"
 flask-wtf = "*"
+werkzeug = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
