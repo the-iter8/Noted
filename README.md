@@ -1,4 +1,4 @@
-# Noted
+# https://github.com/the-iter8/Noted/blob/main/app/static/img/logo.png?raw=true
 A ~~simple~~ notes application based on Flask. Hosted at - https://the-noted.herokuapp.com/
 
 Features - 
