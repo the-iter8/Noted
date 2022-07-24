@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
-from wtforms.validators import DataRequired, Email, Length
+from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 class ListForm(FlaskForm):
     # HTML tag parameters for content field
@@ -20,4 +20,11 @@ class ListForm(FlaskForm):
 class LoginForm(FlaskForm):
     email_id = StringField(validators=[DataRequired(), Email()])
     password = PasswordField(validators=[DataRequired(), Length(8)])
+    submit = SubmitField()
+
+class RegisterForm(FlaskForm):
+    name = StringField(validators=[DataRequired()])
+    email_id = StringField(validators=[DataRequired(), Email()])
+    password = PasswordField(validators=[DataRequired(), EqualTo('confirm', message="Passwords don't match"),Length(8)])
+    confirm = PasswordField(validators=[DataRequired(), Length(8)])
     submit = SubmitField()

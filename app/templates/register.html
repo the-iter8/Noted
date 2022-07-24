@@ -1,10 +1,11 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-    <form action='{{ url_for( "auth.login" ) }}' method='POST'>
+    <form action='{{ url_for( "auth.register" ) }}' method='POST'>
         {{ form.hidden_tag() }} 
+        Full Name: {{ form.name() }} <br>
         Email: {{ form.email_id() }} <br>
         Password: {{ form.password() }} <br>
+        Confirm Password: {{ form.confirm() }} <br>
         {{ form.submit() }} <br>
     </form>
 {% endblock %}

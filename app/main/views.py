@@ -1,7 +1,7 @@
-from flask import render_template, request, redirect, abort, url_for
+from flask import render_template, request, redirect, abort, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 
-from .forms import ListForm, LoginForm
+from .forms import ListForm, LoginForm, RegisterForm
 from . import main, auth
 from .. import db
 from ..models import User, Note
@@ -48,6 +48,28 @@ def edit(note_id):
         db.session.add(note)
         db.session.commit()
         return redirect(url_for('main.home'))
+
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegisterForm()
+    if request.method == 'GET':
+        return render_template('register.html',form=form)
+    else:
+        if form.validate_on_submit():
+            new_user_name = form.name.data
+            new_user_email_id = form.email_id.data
+            new_user_password = form.password.data
+            if not User.query.filter_by(email=new_user_email_id).all():
+                new_user = User(name=new_user_name, 
+                                email=new_user_email_id,
+                                password=new_user_password)
+                db.session.add(new_user)
+                db.session.commit()
+                return redirect(url_for('auth.login'))
+            flash('Email is already taken.')
+            return render_template('register.html',form=form)
+        flash("Invalid Credentials")
+        return render_template('register.html',form=form)
 
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():

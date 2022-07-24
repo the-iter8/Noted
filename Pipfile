@@ -12,6 +12,7 @@ werkzeug = "*"
 flask-migrate = "*"
 flask-login = "*"
 email-validator = "*"
+gunicorn = "*"
 
 [dev-packages]
 

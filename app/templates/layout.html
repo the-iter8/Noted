@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename = 'css/style.css')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="navbar"></header>
+    <nav>
+      <section class="navbar-section">
+        <img src="/static/img/logo.png" alt="nav logo" role="presentation" />
+      </section>
+
+      <section style="width: 40%" class="navbar-section">
+       
+
+        <a href="" class="navbar-items">Home</a>
+        <a href="" class="navbar-items">About</a>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('auth.logout') }}" class="navbar-items">Log Out</a>
+        {% else %}
+        <a href="{{ url_for('auth.register') }}" class="navbar-items">Register</a>
+        <a href="{{ url_for('auth.login') }}" class="navbar-items">Log In</a>
+        {% endif %}
+      </section>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    <!-- FOOTER HERE -->
+    <footer id="site-footer">
+      <section class="horizontal-footer-section" id="footer-top-section">
+        <div id="footer-logo">
+          <picture>
+            <img
+              src="/static/img/logo.png"
+              alt="footer logo"
+              role="presentation"
+            />
+          </picture>
+        </div>
+
+        <div id="footer-buttons-container">
+          <a href="#" class="footer-button" role="button">View our Projects</a>
+        </div>
+      </section>
+
+      <section class="horizontal-footer-section" id="footer-middle-section">
+        <div id="footer-about" class="footer-columns footer-columns-large">
+          <h1>Our Address</h1>
+          <address>
+            <p>
+              <img
+                src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png"
+              />New Delhi, India
+            </p>
+
+            <p>
+              <img
+                src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png"
+              />themodops@gmail.com
+            </p>
+            <p>
+              <img
+                src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png"
+              />8:00 AM – 8:00 PM
+            </p>
+          </address>
+          <h1>Our Newsletter</h1>
+          <a href="#" class="footer-button" role="button">Subscribe</a>
+        </div>
+
+        <div class="footer-columns">
+          <h1>Information</h1>
+          <ul class="footer-column-menu" role="menu">
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">About Us</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Message Us</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link"
+                >Leave a Feedback</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-columns">
+          <h1>Resources</h1>
+          <ul class="footer-column-menu" role="menu">
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">FAQ</a>
+            </li>
+
+            <li class="footer-column-menu-item" role="menuitem">
+              <a
+                href="https://www.youtube.com/channel/UC0p1uOqudO-Yf1cTc8z_ssQ"
+                target="_blank"
+                class="footer-column-menu-item-link"
+                >Guides</a
+              >
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link"
+                >Free Resources</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-columns">
+          <h1>Overview</h1>
+          <ul class="footer-column-menu" role="menu">
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">News</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Pricing</a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Services </a>
+            </li>
+            <li class="footer-column-menu-item" role="menuitem">
+              <a href="#" class="footer-column-menu-item-link">Portfolio</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="horizontal-footer-section" id="footer-bottom-section">
+        <div id="footer-copyright-info">
+          &copy; TheModOps 2022. All rights reserved.
+        </div>
+        <div id="footer-social-buttons">
+          <a href="https://t.me/the_iter8" target="_blank"
+            ><img
+              src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png"
+          /></a>
+
+          <a
+            href="https://www.instagram.com/numismatic_tendencies"
+            target="_blank"
+            ><img
+              src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png"
+          /></a>
+        </div>
+      </section>
+    </footer>
+  </body>
+
+  <!-- JS here because it catches the element befor it even loads. -->
+  <script src="{{url_for('static', filename = 'javascript/script.js')}}">
+    
+  </script>
+</html>
