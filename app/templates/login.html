@@ -1,4 +1,5 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %} 
+{% block content %}
 
 <section class="contentbox login-box">
   <div class="unsupported">
@@ -26,6 +27,13 @@
     >
       {{ form.hidden_tag() }} {{ form.email_id(placeholder = "Email") }} {{
       form.password(placeholder = "Password") }}
+      {% with messages=get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <span style="color:red;">{{ message }}</span>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
       
       <div class="login-form-btn-container">
         <!-- Yeh submit button ka functionality put it on the below button

@@ -1,3 +1,4 @@
+from os import wait
 from flask import render_template, request, redirect, abort, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 
@@ -74,16 +75,19 @@ def register():
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email_id.data).first()
-        if user is not None and user.verify_password(form.password.data):
-            login_user(user)
-            next = request.args.get('next')
-            if next is None or not next.startswith('/'):
-                next = url_for('main.home')
-            return redirect(next)
-        return "<h1>Invalid Username or password</h1>"
-    return render_template('login.html', form=form)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = User.query.filter_by(email=form.email_id.data).first()
+            if user is not None and user.verify_password(form.password.data):
+                login_user(user)
+                next = request.args.get('next')
+                if next is None or not next.startswith('/'):
+                    next = url_for('main.home')
+                return redirect(next)
+            flash("Invalid Username or password")
+            return redirect(url_for('auth.login'))
+    else:
+        return render_template('login.html', form=form)
 
 @auth.route('/logout')
 @login_required

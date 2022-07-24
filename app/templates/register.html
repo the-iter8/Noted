@@ -27,6 +27,11 @@
       {{ form.email_id(placeholder = "Email") }} 
       {{ form.password(placeholder = "Password") }} 
       {{ form.confirm(placeholder = "Confirm Password") }} 
+      {% with messages=get_flashed_messages() %}
+        {% if messages %}
+            <span style="color:red;">{{ messages[0] }}</span>
+        {% endif %}
+      {% endwith %}
       {{ form.submit() }} 
     </form>
   </div>
