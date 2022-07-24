@@ -22,28 +22,26 @@
     <title>Document</title>
   </head>
   <body>
-    <header class="navbar"></header>
     <nav>
       <section class="navbar-section">
         <img src="/static/img/logo.png" alt="nav logo" role="presentation" />
       </section>
 
-      <section style="width: 40%" class="navbar-section">
-       
-
+      <section style="width: 30%" class="navbar-section">
         <a href="" class="navbar-items">Home</a>
         <a href="" class="navbar-items">About</a>
+
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('auth.logout') }}" class="navbar-items">Log Out</a>
         {% else %}
-        <a href="{{ url_for('auth.register') }}" class="navbar-items">Register</a>
+
         <a href="{{ url_for('auth.login') }}" class="navbar-items">Log In</a>
         {% endif %}
       </section>
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
+
     <!-- FOOTER HERE -->
     <footer id="site-footer">
       <section class="horizontal-footer-section" id="footer-top-section">
@@ -170,7 +168,5 @@
   </body>
 
   <!-- JS here because it catches the element befor it even loads. -->
-  <script src="{{url_for('static', filename = 'javascript/script.js')}}">
-    
-  </script>
+  <script src="{{url_for('static', filename = 'javascript/script.js')}}"></script>
 </html>

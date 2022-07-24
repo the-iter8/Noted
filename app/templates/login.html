@@ -1,10 +1,45 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block content %}
 
-{% block content %}
-    <form action='{{ url_for( "auth.login" ) }}' method='POST'>
-        {{ form.hidden_tag() }} 
-        Email: {{ form.email_id() }} <br>
-        Password: {{ form.password() }} <br>
-        {{ form.submit() }} <br>
+<section class="contentbox login-box">
+  <div class="unsupported">
+    <h2>
+      For your device, download our application, designed for managing your
+      tasks on the go!
+    </h2>
+    <a
+      href="https://play.google.com/store/apps/details?id=com.google.android.youtube&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+      ><img
+        alt="Get it on Google Play"
+        src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+    /></a>
+  </div>
+
+  <div class="content login-box-content">
+
+    <p class="heading-general heading-login">Login</p>
+    <p>New user? <a href="{{ url_for('auth.register') }}">Register to continue </a></p>
+    
+    <form
+      action='{{ url_for( "auth.login" ) }}'
+      method="POST"
+      class="login-form"
+    >
+      {{ form.hidden_tag() }} {{ form.email_id(placeholder = "Email") }} {{
+      form.password(placeholder = "Password") }}
+      
+      <div class="login-form-btn-container">
+        <!-- Yeh submit button ka functionality put it on the below button
+         -->
+        <!-- {{form.submit(class_= "login-form-submit") }} -->
+
+        <button class="login-form-button" name="submit">Login</button>
+      </div>
+      
     </form>
+
+
+ 
+
+</section>
+
 {% endblock %}

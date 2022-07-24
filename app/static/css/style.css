@@ -2,7 +2,7 @@
 
 :root {
   --blue: #1e3138;
-  --lightBlue : #00c3ce;
+  --lightBlue: #00c3ce;
 }
 * {
   margin: 0;
@@ -23,6 +23,9 @@ nav,
   padding: 0.8em;
   display: flex;
   justify-content: space-between;
+}
+.navbar-section   {
+  /* justify-content: flex-end; */
 }
 nav {
   padding: 0.2em 4%;
@@ -64,13 +67,11 @@ nav {
   border-bottom: 2px solid black;
 } */
 
-
-
 main {
   display: flex;
   flex-direction: row;
   font-family: "Roboto", sans-serif;
-  margin-top:2% ;
+  margin-top: 2%;
   color: #33322e;
 }
 .unsupported {
@@ -488,7 +489,50 @@ hr {
   display: none;
 }
 
-/* FOOTER CSS PLEASE DONT TOUCH ME */
+/* Login Box */
+.login-box {
+  height: 100vh;
+  height: max-content;
+  box-shadow: none;
+  text-align: center !important;
+  margin: 10% 0;
+}
+.login-box-content {
+  width: min-content;
+  font-size: 90%;
+  text-align: center;
+  box-shadow: none;
+}
+
+.login-form {
+  width: min-content;
+}
+.login-form-button,
+.login-form input {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin: 1em auto auto auto;
+
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  outline: 2px solid black;
+
+  border-radius: 1.5em;
+
+  background-color: white;
+  transition: all 0.3s;
+}
+
+.heading-login {
+  font-weight: 600;
+  text-align: center;
+}
+.login-form-btn-container {
+  display: flex;
+  gap: 1em;
+}
+
 footer {
   font-family: "Open Sans", "Noto Sans", Helvetica, sans-serif;
   font-size: 11pt;
@@ -671,16 +715,11 @@ footer#site-footer #footer-social-buttons img:hover {
   cursor: pointer;
 }
 
-@media screen and (max-width: 1024px) 
-{
-  .navbar-items 
-  {
+@media screen and (max-width: 1024px) {
+  .navbar-items {
     display: none;
   }
-
-    
 }
-
 
 @media screen and (max-width: 960px) {
   footer#site-footer {

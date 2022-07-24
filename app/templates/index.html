@@ -1,96 +1,86 @@
-{% extends 'layout.html' %}
-{% block content %}
-    <main>
-      <section class="contentbox other" id="contentbox-left">
-        <div id="notes-img">
-          <img src="/static/img/icons8-notes.svg" alt="" />
-        </div>
+{% extends 'layout.html' %} {% block content %}
+<main>
+  <section class="contentbox other" id="contentbox-left">
+    <div id="notes-img">
+      <img src="/static/img/icons8-notes.svg" alt="" />
+    </div>
 
-        <div id="heading-left">
-          <p>Noted.</p>
-        </div>
+    <div id="heading-left">
+      <p>Noted.</p>
+    </div>
 
-        <p class="heading-general">Level up your note taking.</p>
+    <p class="heading-general">Level up your note taking.</p>
 
-        <button class="learn-more">
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
-          <span class="button-text">learn more</span>
-        </button>
-      </section>
+    <button class="learn-more">
+      <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+      </span>
+      <span class="button-text">learn more</span>
+    </button>
+  </section>
 
-      <section class="contentbox" d="contentbox-right">
-        <div class="unsupported">
-          <h2>
-            For your device, download our application, designed for managing
-            your tasks on the go!
-          </h2>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.google.android.youtube&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
-            ><img
-              alt="Get it on Google Play"
-              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-          /></a>
-        </div>
+  <section class="contentbox" id="contentbox-right">
+    <div class="unsupported">
+      <h2>
+        For your device, download our application, designed for managing your
+        tasks on the go!
+      </h2>
+      <a
+        href="https://play.google.com/store/apps/details?id=com.google.android.youtube&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+        ><img
+          alt="Get it on Google Play"
+          src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+      /></a>
+    </div>
 
-        <div class="content other">
-          <p id="day" class="heading-general">Monday</p>
-          <hr />
-          <div class="lists">
-            {%for i in tasklist%}
-            <div class="note">
-              <div id="checklist">
-                <input
-                  id="{{ loop.index }}"
-                  type="checkbox"
-                  name="r"
-                  value="1"
-                />
-                <label for="{{ loop.index }}">{{i.title}}</label>
-              </div>
+    <div class="content other">
+      <p id="day" class="heading-general">{}</p>
 
-              <!-- Buttons -->
+      <hr />
+      <div class="lists">
+        {%for i in tasklist%}
+        <div class="note">
+          <div id="checklist">
+            <input id="{{ loop.index }}" type="checkbox" name="r" value="1" />
+            <label for="{{ loop.index }}">{{i.title}}</label>
+          </div>
 
-              <div class="btns other">
-                <form action="/delete/{{ i.id }}" method="post">
-                  <button
-                    type="submit"
-                    class="modify-btns delete-btn"
-                    id="{{ i.id }}"
-                  >
-                    <img src="/static/img/icons8-trash.svg" alt="delete" />
-                  </button>
-                </form>
+          <!-- Buttons -->
 
-                <button
-                  type="submit"
-                  class="modify-btns edit-btn"
-                  id="{{ i.id }}"
-                >
-                  <img src="/static/img/edit.svg" alt="edit" />
-                </button>
-
-                <button
-                  type="submit"
-                  class="modify-btns save-btn"
-                  id="{{ i.id }}"
-                  form="edit-form"
-                >
-                  <img src="/static/img/tick.svg" alt="edit" />
-                </button>
-              </div>
-            </div>
-            {%endfor%}
-
-            <form action="/" method="POST">
-              {{ form.hidden_tag() }} {{ form.content() }}
-              <label for="name" class="form-label">Add Note</label>
-              {{ form.submit() }}
+          <div class="btns other">
+            <form action="/delete/{{ i.id }}" method="post">
+              <button
+                type="submit"
+                class="modify-btns delete-btn"
+                id="{{ i.id }}"
+              >
+                <img src="/static/img/icons8-trash.svg" alt="delete" />
+              </button>
             </form>
+
+            <button type="submit" class="modify-btns edit-btn" id="{{ i.id }}">
+              <img src="/static/img/edit.svg" alt="edit" />
+            </button>
+
+            <button
+              type="submit"
+              class="modify-btns save-btn"
+              id="{{ i.id }}"
+              form="edit-form"
+            >
+              <img src="/static/img/tick.svg" alt="edit" />
+            </button>
           </div>
         </div>
-      </section>
-    </main>
-{% endblock %}
+        {%endfor%}
 
+        <form action="/" method="POST">
+          {{ form.hidden_tag() }} {{ form.content() }}
+          <label for="name" class="form-label">Add Note</label>
+          {{ form.submit() }}
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

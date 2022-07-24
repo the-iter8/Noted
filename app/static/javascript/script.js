@@ -1,4 +1,16 @@
 // Handling the click to add button
+const d = new Date();
+const day_dict = [
+  "Sunday",
+  "Monday",
+  "Tueday",
+  "Wednesday",
+  "Thurday",
+  "Friday",
+  "Saturday",
+];
+document.querySelector("#day").textContent = day_dict[d.getDay()];
+
 let addNote = document.querySelector(".form-label");
 let modifyBtns = document.querySelectorAll(".modify-btns");
 let editBtns = document.querySelectorAll(".edit-btn");
