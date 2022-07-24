@@ -3,8 +3,8 @@
 A ~~simple~~ notes application based on Flask. Hosted at - https://the-noted.herokuapp.com/
 
 Features - 
-- User Login Authecation Support, With CSRF Protection 
-  It Store the user's notes in a database (SQLite) and access it by logging it.
+- User Login Authecation Support, with CSRF protection 
+  It stores the user's notes in SQLite database and access it by logging in.
 
 - Addition, Deletion and Modification of Notes actively updated on the database.
 
