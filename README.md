@@ -18,3 +18,5 @@ Features -
 ## Running (development mode)
 * ```pipenv shell```
 * (Windows) ```run.bat``` \\ (MacOS or Linux) ```source run```
+
+CREATED BY: [Abhishek Pandey](https://github.com/abhishak3) and [Ankit Sharma](https://github.com/the-iter8/)
